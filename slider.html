@@ -1,0 +1,28 @@
+<script src="jquery-3.6.0.min.js"></script>
+<!--adicionando a biblioteca jquery-->
+<script>
+    /*criar as variaveis,*/
+    var slides = ["#s1", "#s2", "#s3", "#s4", "#s5"]; /*criar um vetor com o s identificadores*/
+    slideatual = 0; /*indica qual slide vai aparecer*/
+    slidemax = 4; /*indicado que o maior esta no indice 4 */
+    tempo = 10000; /*indica o tempo pra troca de slide, como usaremos o set interval que trabalha co milisegundos equivale a 10 seg*/
+    $(document).ready(function() { /*verifica se a pagina foi carregada para assim iniciar o set interval*/
+        $(slides[slideatual]).fadeTo(1000, 1);
+        setInterval(troca, tempo); /*ele indica quem vai ser chamado e em quanto tempo vai ser chamado*/
+
+        function troca() { /*vai fazer a troca ocultando o array q esta a mostra e mostrando o proximo*/
+            $(slides[slideatual]).fadeTo(1000, 0); /*usaremos o array slide com o indice que esta sendo informado no slideatual, com a funcao fadeTo e se ele vai mostrar ou ocultar*/
+            slideatual++; /*incrementa 1 no slideatual*/
+            if (slideatual > slidemax) { /*verifica se slide atual chegou ao fim... se sim volta ao zero*/
+                slideatual = 0;
+            }
+            $(slides[slideatual]).fadeTo(1000, 1);
+        }
+
+    });
+</script>
+<img id="s1" src="img/a.png" />
+<img id="s2" src="img/b.png" />
+<img id="s3" src="img/d.png" />
+<img id="s4" src="img/e.png" />
+<img id="s5" src="img/f.png" />

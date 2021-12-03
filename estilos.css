@@ -1,0 +1,285 @@
+        body {
+            margin: 0 auto;
+            /*para centralizar a pagina dentro da janela*/
+            width: 960px;
+            /*tamanho da janela*/
+            background-color: #ffffff;
+            overflow: scroll;
+            /*obriga barra de rolagem*/
+            overflow-x: hidden;
+            /*esconder overflow no x*/
+            background-image: url(img/--.png);
+            background-repeat: repeat-x;
+            /*pra repetir a imagem somente no eixo x*/
+        }
+        
+        header {
+            height: 178px;
+            /*controla a altura do header*/
+        }
+        /*/////////////////////configuração do topo.php/////////////////////*/
+        
+        #logo_topo {
+            width: 150px;
+            height: 168px;
+            background-color: rgb(0, 0, 0);
+            background-image: url(img/logocasa.png);
+            float: left;
+            /*para flutuar o menu e conseguir mandar os links para a esquerda*/
+        }
+        
+        .btmenu {
+            text-decoration: none;
+            /*para tirar o sublinhado dos links/*/
+            display: table-cell;
+            /*para facilitar o alinhamento interno*/
+            width: 120px;
+            /*largura*/
+            height: 30px;
+            /*altura*/
+            margin: 0px;
+            padding: 1px 5px 1 px 5 px;
+            background-color: rgb(58, 54, 54);
+            text-align: center;
+            vertical-align: middle;
+            border-radius: 10px;
+            color: blue;
+            font-family: arial;
+            font-size: 20px;
+            cursor: pointer;
+            border: 0px;
+            text-transform: uppercase;
+            outline: none;
+            /*pra tirar a linha quando clicado*/
+        }
+        
+        .btmenu:hover {
+            /*botao muda de cor com o mouse em cima*/
+            background-color: crimson;
+            color: cyan;
+        }
+        
+        .menu_ger {
+            display: inline-block;
+            /*para deixar um ao lado do outro*/
+        }
+        
+        .menub {
+            /*submenu*/
+            display: table-cell;
+            /*formato tabela*/
+            text-align: center;
+            vertical-align: middle;
+            width: 120px;
+            margin: 0px;
+            background-color: cadetblue;
+            border-radius: 10px;
+            /*arredondar bordas*/
+            cursor: pointer;
+            border: 0px;
+            visibility: hidden;
+            /*esconder submenus*/
+        }
+        
+        .menub a {
+            color: black;
+            padding: 12px 16px;
+            /*distanciar*/
+            text-decoration: none;
+            /*tirar sublinhado*/
+            display: block;
+            /*para deixar um embaixo do outro*/
+            font-family: arial;
+            font-size: 10px;
+            text-transform: uppercase;
+        }
+        
+        .menub a:hover {
+            color: #ffffff;
+            font-weight: bold;
+            /*negrito*/
+        }
+        
+        #menu {
+            /*configuracao do menu*/
+            width: 810px;
+            height: 145px;
+            background-color: rgb(0, 0, 0);
+            display: table-cell;
+            /*pra deixar como celula de tabela*/
+            vertical-align: middle;
+            /*para trazer os menus para o meio*/
+            padding: 0px 0px 0px 400px;
+        }
+        /*/////////////////////configuração do slider/////////////////////*/
+        
+        #slider {
+            background-color: cadetblue;
+            width: 100%;
+            height: 400px;
+            border: 0px;
+            margin: 0px;
+            padding: 0px;
+            position: absolute;
+            left: 0px;
+        }
+        
+        #s1,
+        #s2,
+        #s3,
+        #s4,
+        #s5 {
+            opacity: 0;
+            /*para esconder os slides*/
+            filter: alpha(opacity=0);
+            /*para versoes mais antigas*/
+            position: absolute;
+        }
+        /*/////////////////////configuração do buscador/////////////////////*/
+        
+        #buscador {
+            width: 960px;
+            margin: 400px 0px 0px 0px;
+        }
+        
+        #fbuscador {
+            display: flex;
+            /*para distribuir a div de baixo igualmente pelo espaco*/
+            border: 1px solid #ccc;
+            /*borda*/
+            border-radius: 15px;
+            /*para arredindar bordas*/
+            padding: 20px;
+        }
+        
+        .divbusca {
+            margin: auto;
+            /*para deixar tudo dividido igual*/
+            /* float: left;
+    para deixar uma ao lado da outra, mas vamos usar a forma de baixo*/
+            display: inline;
+        }
+        
+        label {
+            display: block;
+            /*executa a quebra de linha e poe o elemento para baixo*/
+        }
+        
+        .titulo {
+            font-size: 22px;
+            color: #bbb;
+            padding: 10px 0px 0px 0px;
+            /*padding para afastar de cima*/
+            margin: 0px 0px 10px 0px;
+            /*margin para afastar de baixo*/
+        }
+        /*/////////////////////configuração do destaques/////////////////////*/
+        
+        #destaques {
+            display: flex;
+            /*distribui as imagens*/
+            padding: 15px 0px;
+            /*espaco entre*/
+            border: 1px solid black;
+        }
+        
+        .destaques {
+            margin: auto;
+            /*para centralizar*/
+            padding: 50px;
+            /*para n ficar muito grudado*/
+            background: black;
+            border-radius: 100%;
+            /*pra deixar redondo*/
+        }
+        
+        .destaques:hover {
+            background: #ff0000;
+        }
+        /*/////////////////////configuração do rodape/////////////////////*/
+        
+        footer {
+            background: #005500;
+            padding: 1px 20px;
+            margin: 15px 0px;
+            text-align: center;
+        }
+        
+        footer a {
+            text-decoration: none;
+            color: #004400;
+        }
+        /*/////////////////////configuração dtela de login/////////////////////*/
+        
+        #main {
+            padding-top: 20px;
+        }
+        
+        #f_login input[type=text],
+        input[type=password] {
+            /*aqui a configuracao só esta valendo para usuario e senha, pq colocamos input do tipo texto e password*/
+            /*formatação interna*/
+            display: block;
+            /*pra passar para baixo o logar*/
+            margin-bottom: 15px;
+            /*para descer */
+            padding: 10px;
+            font-size: 15px;
+            color: #0000FF;
+            /*cor da letra interna*/
+            width: 350px;
+        }
+        
+        #f_login label {
+            /*configuração externa*/
+            font-size: 20px;
+            color: #0000dd;
+        }
+        
+        #f_login input[type=submit] {
+            /*configuracao do botao*/
+            text-decoration: none;
+            /*para tirar o sublinhado dos links/*/
+            display: table-cell;
+            /*para facilitar o alinhamento interno*/
+            width: 300px;
+            /*largura*/
+            height: 40px;
+            /*altura*/
+            margin: 0px;
+            padding: 1px 5px 1 px 5 px;
+            background-color: rgb(58, 54, 54);
+            text-align: center;
+            vertical-align: middle;
+            border-radius: 10px;
+            color: blue;
+            font-family: arial;
+            font-size: 20px;
+            cursor: pointer;
+            border: 0px;
+        }
+        
+        #f_login input[type=submit]:hover {
+            background-color: #ff0000;
+            color: #000000;
+        }
+        
+        #lgErro {
+            color: crimson;
+            font-size: 20px;
+            padding: 5px;
+            border: 5px solid #888;
+            border-radius: 10px;
+            background-color: #eee;
+            text-align: center;
+            width: 300px;
+        }
+        
+        .f_colaborador input,
+        select {
+            display: block;
+            margin-bottom: 10px;
+            /*distanciar elementos*/
+            text-transform: uppercase;
+            /*deixar tudo maiusculo*/
+        }
