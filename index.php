@@ -6,37 +6,38 @@
     <meta charset="utf-8" />
     <link rel="stylesheet" href="estilos.css">
 
+
 </head>
 
 <body>
     <header>
         <?php
-        include "topo.php";
+        require_once("topo.php");
         ?>
     </header>
 
-    <section id="slider">
+    <section class="banner">
         <?php
-        include "slider.html";
+        require_once("slider.html");
         ?>
     </section>
 
-    <section id="buscador">
+    <section class="buscador">
         <?php
-        include "buscador.php";
+        require_once("buscador.php");
         ?>
     </section>
 
-    <section id="destaques">
+    <section class="destaques">
         <?php
-        include "destaques.html";
+        require_once("destaques.html");
 
         ?>
     </section>
     <footer>
         <!--rodapé-->
         <?php
-        include "rodape.html";
+        require_once("rodape.html");
 
         ?>
     </footer>

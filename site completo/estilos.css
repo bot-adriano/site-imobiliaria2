@@ -1,0 +1,344 @@
+* {
+    /*reseter é para resetar os componentes*/
+    margin: 0px;
+    padding: 0px;
+    outline: 0px;
+    background: transparent;
+    box-sizing: border-box;
+    color: #000;
+}
+
+body {
+    background-color: #fff;
+    overflow: scroll;
+    /*forca barra de rolagem*/
+    overflow-x: hidden;
+}
+
+header,
+section,
+footer {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+header {
+    background: #000;
+    align-items: center;
+}
+
+header img {
+    margin: 10px 0px;
+}
+
+header nav {
+    display: flex;
+}
+
+.btmenu {
+    text-decoration: none;
+    /*tira o sublinhado*/
+    display: flex;
+    /*pra ajustar*/
+    width: 120px;
+    height: 30px;
+    margin: 2px;
+    padding: 1px 5px;
+    background-color: #222;
+    border-radius: 10px;
+    color: #bbb;
+    font-family: Arial;
+    font-size: 10px;
+    cursor: pointer;
+    border: 0px;
+    text-transform: uppercase;
+    outline: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.btmenu:hover {
+    background-color: #c22;
+    color: #fff;
+}
+
+.banner {
+    justify-content: center;
+    align-items: center;
+}
+
+#s1,
+#s2,
+#s3,
+#s4,
+#s5 {
+    opacity: 0;
+    display: none;
+}
+
+.buscador {
+    flex-direction: column;
+    align-items: center;
+    margin: 10px 0px;
+    padding-left: 20%;
+    padding-right: 20%;
+}
+
+.buscador p {
+    display: flex;
+    width: 100%;
+    margin-top: 10px;
+    justify-content: flex-start;
+}
+
+.buscador form {
+    width: 100%;
+    border: 1px solid #888;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.titulo {
+    padding: 5px;
+    font-size: 20px;
+    color: #c22;
+}
+
+.destaques {
+    padding-left: 20%;
+    padding-right: 20%;
+    flex-wrap: wrap;
+    /*deixa um abaixo do outro */
+}
+
+.destaque {
+    background-color: #000;
+    border-radius: 100%;
+    padding: 50px;
+}
+
+footer {
+    margin-top: 10px;
+    background: #222;
+    padding: 20px 0px;
+}
+
+#main,
+#imoveis {
+    padding-top: 20px;
+    flex-direction: column;
+}
+
+#imoveis {
+    align-items: center;
+}
+
+#imoveis article {
+    width: 960px;
+    display: flex;
+    background-color: #eee;
+    margin-bottom: 15px
+}
+
+#d2 {
+    width: 100%;
+}
+
+#titulo {
+    display: flex;
+}
+
+#titulo {
+    justify-content: space-between;
+    background-color: #c22;
+    padding: 5px;
+}
+
+#dados {
+    padding: 5px;
+}
+
+#t1 a,
+#t2,
+p {
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#t1 a:hover {
+    text-decoration: underline;
+}
+
+
+/*detalhes  do imovel*/
+
+.mini {
+    width: 117px;
+    height: 88px;
+    display: block;
+    /*deixa a imagem uma embaixo da outra*/
+    margin: 5px;
+    border: 5px;
+    box-sizing: content-box;
+    cursor: pointer;
+}
+
+#dvdetalhes {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    margin-right: 5px;
+    display: flex;
+    width: 100%;
+    font-size: 20px;
+}
+
+#dvc1,
+#dvc2 {
+    width: 50%;
+    color: #555;
+}
+
+.preco {
+    color: #f55;
+}
+
+
+/*janela modal*/
+
+#janelaModal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    /*trazer pra frente*/
+    padding-top: 100px;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 8);
+    overflow: auto;
+    /*exibe a barra de rolagem qdo necessario*/
+}
+
+#imgModal {
+    margin: auto;
+    display: block;
+    width: 100%;
+    max-width: 800px;
+}
+
+#btFechar {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #fff;
+    font-size: 40 px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+@media screen and(max-device-width:450px) {
+    header,
+    section,
+    footer {
+        padding-left: 3%;
+        padding-right: 3%;
+    }
+    header {
+        flex-direction: column;
+    }
+    header img {
+        width: 100%;
+        height: 100%;
+    }
+    header nav {
+        flex-direction: column;
+        width: 100%;
+    }
+    .btmenu {
+        width: 100%;
+        height: 80px;
+        font-size: 30px;
+    }
+    .banner.footer,
+    .destaques {
+        display: none;
+    }
+    .buscador {
+        padding-left: 3%;
+        padding-right: 3%;
+    }
+    .buscador form,
+    buscador p {
+        width: 100%;
+    }
+    .buscador p,
+    select,
+    label {
+        font-size: 30px;
+    }
+    /*menu gerenciamento*/
+    .menu_ger {
+        display: inline-block;
+        /*para deixar um ao lado do outro*/
+    }
+    .menub {
+        /*submenu*/
+        display: table-cell;
+        /*formato tabela*/
+        text-align: center;
+        vertical-align: middle;
+        width: 120px;
+        margin: 0px;
+        background-color: cadetblue;
+        border-radius: 10px;
+        /*arredondar bordas*/
+        cursor: pointer;
+        border: 0px;
+        visibility: hidden;
+        /*esconder submenus*/
+    }
+    .menub a {
+        color: black;
+        padding: 12px 16px;
+        /*distanciar*/
+        text-decoration: none;
+        /*tirar sublinhado*/
+        display: block;
+        /*para deixar um embaixo do outro*/
+        font-family: arial;
+        font-size: 10px;
+        text-transform: uppercase;
+    }
+    .menub a:hover {
+        color: #ffffff;
+        font-weight: bold;
+        /*negrito*/
+    }
+    #menu {
+        /*configuracao do menu*/
+        width: 810px;
+        height: 145px;
+        background-color: rgb(0, 0, 0);
+        display: table-cell;
+        /*pra deixar como celula de tabela*/
+        vertical-align: middle;
+        /*para trazer os menus para o meio*/
+        padding: 0px 0px 0px 400px;
+    }
+    .f_novo_imovel input,
+    select,
+    textarea {
+        display: block;
+        margin-bottom: 10px;
+    }
+}

@@ -46,10 +46,15 @@ include "conexao.inc";/*colocamos o include da conexao para conectar com o sql*/
             $sql = "INSERT INTO usuario (nome,username,senha,acesso) VALUES ('$vnome','$vuser','$vsenha', $vacesso)";/*rotina sql, inserir dentro da tabela usuario os valores, colocamos entre apostrofes pq são strings e se for numerico é sem */
             mysqli_query($con, $sql);
             $linhas = mysqli_affected_rows($con);/*verifica se o insert obteve sucesso, armazenando na variavel linhas para ver qto ele esta retornando , se for maior q 0 foi bem sucedido*/
-            if ($linhas >= 1) {
+            /* if ($linhas >= 1) {
                 echo " <p> Novo colaborador gravado com sucesso </p> ";
             } else {
                 "<p> Erro ao gravar novo colaborador </p>";
+            }*/
+            if ($linhas >= 1) {
+                echo "<script>alert('Novo colaborador adicionado com sucesso');</script>";
+            } else {
+                echo "<script>alert ('Erro ao Adicionar colaborador');</script>";
             }
         }
         ?>

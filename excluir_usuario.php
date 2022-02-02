@@ -42,10 +42,15 @@ include "conexao.inc";/*colocamos o include da conexao para conectar com o sql*/
             $sql = "DELETE FROM usuario WHERE ID_COLABORADOR=$vid";/*colocamos o coamndo delete da tabela colaboradores quando quando o id colaborador for igual ao valor da variavel id*/
             mysqli_query($con, $sql);/*executa o mysql com a query com a conexao e o codigo sql que esta no codigo sql*/
             $linhas = mysqli_affected_rows($con);/*verifica se o codigo obteve sucesso , verificando quantas linhas foram afetadas*/
-            if ($linhas >= 1) {/*verificamos se obteve sucesso com if */
+            /*  if ($linhas >= 1) {/*verificamos se obteve sucesso com if *//*
                 echo "<p> Colaborador deletado com sucesso </p> ";
             } else {
                 echo "<p> Erro ao deletar colaborador</p>";
+            }*/
+            if ($linhas >= 1) {
+                echo "<script>alert('Novo colaborador deletado com sucesso');</script>";
+            } else {
+                echo "<script>alert ('Erro ao Deletar colaborador');</script>";
             }
         }
         ?>
