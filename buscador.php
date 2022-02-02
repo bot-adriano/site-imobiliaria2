@@ -22,7 +22,7 @@ include "conexao.inc";
 
 
 
-            $maximo_registros_exibidos = 3;/*limita em 5 o limite a ser exibido*/
+            $maximo_registros_exibidos = 10;/*limita em 5 o limite a ser exibido*/
             if (isset($_GET["pg"])) {/*verifica se o parametro pg existe*/
                 $pagina_atual = $_GET["pg"];/*se existir ele carrega a pagina atual com o pg*/
             } else {
@@ -174,4 +174,39 @@ include "conexao.inc";
         <input type="submit" value="buscar" name="f_submit" class="btmenu">
         <!--aqui vamos manter a formatação do btmenu-->
     </div>
+</form>
+<form name="search_form" method="post" action="buscador.php">
+    <select name="categoria">
+        <option value="">categoria</option>
+        <?php
+                $sql = "SELECT * FROM tb_imoveis ";
+                $res = mysqli_query($con, $sql);
+            // $getcategories = "SELECT * FROM tb_imoveis";
+        //$getcategoriesquery = mysqli_query($getcategories);
+       while ($exibe = mysqli_fetch_array($res)) {/*mysqli_fetch array para retornar em forma de array o total de colaboradores e while para para escrever um option enquanto estiver retornando linhas pelo fetch_array*/
+           echo "<option value='" . $exibe['id_imovel'] . "'>" . $exibe['imovel'] . "</option>";
+      /*  while ($getcategoriesline = mysqli_fetch_array($res)) {
+            $categoria = $getcategoriesline['imovel'];
+            $categoria_id = $getcategoriesline['imovel_id'];
+            echo "<option value ='$categoria_id'>$categoria</option>";*/
+        }
+        
+        ?>
+         
+
+    </select>
+    <select name="tipo">
+        <option value="">tipo </option>
+        <?php
+                $sql = "SELECT * FROM tb_casa ";
+                $res = mysqli_query($con, $sql);
+       while ($exibe = mysqli_fetch_array($res)) {/*mysqli_fetch array para retornar em forma de array o total de colaboradores e while para para escrever um option enquanto estiver retornando linhas pelo fetch_array*/
+           echo "<option value='" . $exibe['id_imovel'] . "'>" . $exibe['imovel'] . "</option>";
+        }
+        ?>
+         
+
+    </select>
+    <input type="text" name="busca" /><input type="submit" name="f_bt_buscar" class="btmenu" value="buscar" />
+   
 </form>
