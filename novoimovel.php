@@ -159,7 +159,7 @@ include "conexao.inc"; /*colocamos o include da conexao para conectar com o sql*
         <form name="f_novo_imovel" action="novoimovel.php" class="f_novoimovel" method="POST" enctype="multipart/form-data">
             <!--para funcionar postar as fotos temos que mudar  para post e acrescentar multipat/fform-data-->
             <input type="hidden" name="num" value="<?php echo $n1; ?>">
-            <label>marca</label>
+            <label>tipo de imóvel</label>
             <select name="f_imovel">
                 <option value=""></option>
                 <?php
