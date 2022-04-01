@@ -104,6 +104,8 @@ include "conexao.inc"; /*colocamos o include da conexao para conectar com o sql*
             $vid_cep = $_POST['f_cep'];
             $vid_rua = $_POST['f_rua'];
             $v_obs = $_POST['f_obs'];
+            $loc= $_POST['loc'];
+            $vend= $_POST['vend'];
             $v_venda = number_format((float)$_POST['f_venda'], 2, '.', '');
             $v_aluguel = number_format((float)$_POST['f_aluguel'], 2, '.', '');
             $v_iptu = number_format((float)$_POST['f_iptu'], 2, '.', '');
@@ -136,9 +138,12 @@ include "conexao.inc"; /*colocamos o include da conexao para conectar com o sql*
                 $zona1 = 'zona leste';
             }
             $zona1 = $_POST['f_zona'];
+            if($zona1 >=0){echo "<script>alert('$zona1');</script>";}else {echo "<script>alert('nao tem');</script>";}
+            if($loc >=0){echo "<script>alert('$zona1');</script>";}else {echo "<script>alert('nao tem');</script>";}
 
 
-            $sql = "INSERT INTO tb_casa ( id_qualimovel, id_modelocasa, id_bairro,id_cidade,id_cep,id_rua,obs,venda,aluguel,iptu,condominio,quartos,suite,sala,vaga,banheiro,foto1,foto2,foto3,mini1,mini2,mini3,vendido,alugado,bloqueado,zona) VALUES ($vid_imovel, $vid_modelo, '$vid_bairro', '$vid_cidade', $vid_cep, '$vid_rua', '$v_obs', $v_venda, $v_aluguel, $v_iptu, $v_condominio, $v_quartos, $v_suite, $v_sala, $v_vaga, $v_banheiro, '$vfoto1', '$vfoto2', '$vfoto3', '$vmini1', '$vmini2', '$vmini3', $vvendido, $valugado, $vbloqueado,'$zona1')";
+
+            $sql = "INSERT INTO tb_casa ( id_qualimovel, id_modelocasa, id_bairro,id_cidade,id_cep,id_rua,obs,ven,loc,venda,aluguel,iptu,condominio,quartos,suite,sala,vaga,banheiro,foto1,foto2,foto3,mini1,mini2,mini3,vendido,alugado,bloqueado,zona) VALUES ($vid_imovel, $vid_modelo, '$vid_bairro', '$vid_cidade', $vid_cep, '$vid_rua', '$v_obs', $vend,$loc,$v_venda, $v_aluguel, $v_iptu, $v_condominio, $v_quartos, $v_suite, $v_sala, $v_vaga, $v_banheiro, '$vfoto1', '$vfoto2', '$vfoto3', '$vmini1', '$vmini2', '$vmini3', $vvendido, $valugado, $vbloqueado,'$zona1')";
             mysqli_query($con, $sql);
             $linhas = mysqli_affected_rows($con);
             if ($linhas >= 1) {
@@ -243,6 +248,16 @@ include "conexao.inc"; /*colocamos o include da conexao para conectar com o sql*
 
                 <label>detalhes</label>
                 <textarea name="f_obs" rows="5" cols="51" required="required"></textarea>
+                
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="null" name="vend">
+                    <label class="form-check-label" for="defaultCheck1">venda</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="null" name="loc">
+                    <label class="form-check-label" for="defaultCheck1">locacao</label>
+                </div>
+
                 <label>venda</label>
                 <input type="text" name="f_venda" maxlength="50" size="50" pattern="[0-9]+$" required="required">
                 <label>aluguel</label>
