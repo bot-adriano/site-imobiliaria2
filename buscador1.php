@@ -12,8 +12,7 @@ include "conexao.inc";
     if (isset($_POST["f_bt_buscar"])) {
         $vcidade = $_POST["f_city"];
         $vimovel = $_POST["f_imovel"];
-        $sql = "SELECT * FROM tb_casa WHERE id_cidade LIKE '%$vcidade%' or  id_bairro like'%$vcidade%' or id_rua like '%$vcidade%' AND id_qualimovel = '$vimovel' " ;
-        // AND id_qualimovel == '$vimovel'
+        $sql = "SELECT * FROM tb_casa WHERE id_cidade LIKE '%$vcidade%' or  id_bairro like'%$vcidade%' or id_rua like '%$vcidade%' AND id_qualimovel == '$vimovel' " ;
         $res = mysqli_query($con, $sql);
         $lin = mysqli_num_rows($res);/*  $lin = mysqli_num_rows($res);
     echo "$lin registros encontrados";*/echo "<script>alert('$lin registros encontrados');</script>";
@@ -36,16 +35,15 @@ include "conexao.inc";
             $inicio *= $maximo_registros_exibidos;/*pra carregar apos o ultimo registro visualizado, sem isso ele vai carregar o indice 1, porém o indice 1 ja foi mostrado ja que aparece ate o 4*/
 
             /*$sql= "SELECT * FROM tb_casa limit 1,3 ";limit deixa limitando no numero de itens a ser exibido quando se usa somente 1 ele mostra a quantidade a ser exibido, mas se coloca 1,3 indica q a partir do indice 1 carrega 3 indices */
-            $sql = "SELECT * FROM tb_casa 
-            -- tb_casa.*,tb_imoveis.*,tb_tipo_imovel.
-             INNER JOIN tb_imoveis ON    tb_imoveis.id_imovel = tb_casa.id_qualimovel
+            $sql = "SELECT tb_casa.*,tb_imoveis.*,tb_tipo_imovel.* FROM tb_casa 
+             INNER JOIN tb_imoveis ON  tb_casa.id_qualimovel == tb_imoveis.id_imovel
              
-             WHERE id_cidade LIKE '%$vcidade%' or  id_bairro like'%$vcidade%' or id_rua like '%$vcidade%' AND id_qualimovel = '$vimovel' 
+             WHERE id_cidade LIKE '%$vcidade%' or  id_bairro like'%$vcidade%' or id_rua like '%$vcidade%' 
              limit $inicio,$maximo_registros_exibidos";
             $res = mysqli_query($con, $sql);
-             
-            $total_registros = mysqli_num_rows($res);/*vai guardar e registrar os registros */
-            // $total_registros=mysqli_fetch_array($res);
+              echo "$res";
+            // $total_registros = mysqli_num_rows($res);/*vai guardar e registrar os registros */
+            $total_registros=mysqli_fetch_array($res);
             $total_paginas = $total_registros / $maximo_registros_exibidos;/*aqui calcula o numero de paginas*/
 
 
@@ -131,17 +129,6 @@ include "conexao.inc";
 
 
     <form name="fbuscador" id="fbuscador" method="POST" action="buscador.php">
-    <label>venda/Locação</label>
-            <select name="f_modalidade">
-                <option value=""></option>
-                <?php
-                $sql = "SELECT * FROM tb_locven";
-                $res = mysqli_query($con, $sql);
-                while ($linha = mysqli_fetch_row($res)) {
-                    echo "<option value='" . $linha[0] . "'>" . $linha[1] . "</option>";/*insere o codigo da tabela imoveis guardando o indice e na linha [0]pegamos a descrição do imóvel*/
-                }
-                ?>
-            </select>
         <label>tipo de imóvel</label>
             <select name="f_imovel">
                 <option value=""></option>
@@ -160,85 +147,10 @@ include "conexao.inc";
     
 </body>
 
-<form name="search_form" method="post" action="buscador.php">
-    <select name="categoria">
-        <option value="">categoria</option>
-        <?php
-                $sql = "SELECT * FROM tb_imoveis ";
-                $res = mysqli_query($con, $sql);
-            // $getcategories = "SELECT * FROM tb_imoveis";
-        //$getcategoriesquery = mysqli_query($getcategories);
-       while ($exibe = mysqli_fetch_array($res)) {/*mysqli_fetch array para retornar em forma de array o total de colaboradores e while para para escrever um option enquanto estiver retornando linhas pelo fetch_array*/
-           echo "<option value='" . $exibe['id_imovel'] . "'>" . $exibe['imovel'] . "</option>";
-      /*  while ($getcategoriesline = mysqli_fetch_array($res)) {
-            $categoria = $getcategoriesline['imovel'];
-            $categoria_id = $getcategoriesline['imovel_id'];
-            echo "<option value ='$categoria_id'>$categoria</option>";*/
-        }
-        
-        ?>
-         
-
-    </select>
-    <select name="tipo">
-        <option value="">tipo </option>
-        <?php
-                $sql = "SELECT * FROM tb_casa ";
-                $res = mysqli_query($con, $sql);
-       while ($exibe = mysqli_fetch_array($res)) {/*mysqli_fetch array para retornar em forma de array o total de colaboradores e while para para escrever um option enquanto estiver retornando linhas pelo fetch_array*/
-           echo "<option value='" . $exibe['id_qualimovel'] . "'>" . $exibe['id_modelocasa'] . "</option>";
-        }
-        ?>
-         
-
-    </select>
-    <input type="text" name="busca" /><input type="submit" name="f_bt_buscar" class="btmenu" value="buscar" />
-   
-</form>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-
-
-
-
-
-
-
-
-
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
 <p class="titulo">aluguel</p><br>
 <form name="fbuscador" id="fbuscador" action="consulta.php" method="post">
     <div class="divbusca">
-        colocamos tudo dentro de uma div pra facilitar a formatação
+        <!--colocamos tudo dentro de uma div pra facilitar a formatação -->
         <label>selecione a região</label>
         <!--/*ele vai oreencher automaticamente com os dados do bd*/-->
         <select name="regiao" id="id_regiao">
@@ -286,3 +198,40 @@ include "conexao.inc";
         <!--aqui vamos manter a formatação do btmenu-->
     </div>
 </form>
+<form name="search_form" method="post" action="buscador.php">
+    <select name="categoria">
+        <option value="">categoria</option>
+        <?php
+                $sql = "SELECT * FROM tb_imoveis ";
+                $res = mysqli_query($con, $sql);
+            // $getcategories = "SELECT * FROM tb_imoveis";
+        //$getcategoriesquery = mysqli_query($getcategories);
+       while ($exibe = mysqli_fetch_array($res)) {/*mysqli_fetch array para retornar em forma de array o total de colaboradores e while para para escrever um option enquanto estiver retornando linhas pelo fetch_array*/
+           echo "<option value='" . $exibe['id_imovel'] . "'>" . $exibe['imovel'] . "</option>";
+      /*  while ($getcategoriesline = mysqli_fetch_array($res)) {
+            $categoria = $getcategoriesline['imovel'];
+            $categoria_id = $getcategoriesline['imovel_id'];
+            echo "<option value ='$categoria_id'>$categoria</option>";*/
+        }
+        
+        ?>
+         
+
+    </select>
+    <select name="tipo">
+        <option value="">tipo </option>
+        <?php
+                $sql = "SELECT * FROM tb_casa ";
+                $res = mysqli_query($con, $sql);
+       while ($exibe = mysqli_fetch_array($res)) {/*mysqli_fetch array para retornar em forma de array o total de colaboradores e while para para escrever um option enquanto estiver retornando linhas pelo fetch_array*/
+           echo "<option value='" . $exibe['id_imovel'] . "'>" . $exibe['imovel'] . "</option>";
+        }
+        ?>
+         
+
+    </select>
+    <input type="text" name="busca" /><input type="submit" name="f_bt_buscar" class="btmenu" value="buscar" />
+   
+</form>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
